@@ -49,3 +49,4 @@ if (login_modal_btn) {
     }
   });
 }
+
