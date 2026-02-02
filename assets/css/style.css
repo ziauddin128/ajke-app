@@ -14,10 +14,12 @@
   --bg-gray-100: #f3f4f6;
   --gray-600: #4b5563;
   --navbar-height: 80px;
+  --quick-menu-height: 50px;
 }
 
 /* Navbar */
 .nav-bar {
+  height: var(--navbar-height);
   padding: 10px 30px;
   border-bottom: 1px solid #dadada;
   position: sticky;
@@ -777,11 +779,12 @@
 }
 
 .product-det-top {
+  position: sticky;
+  top: var(--navbar-height);
+
   padding-bottom: 10px;
   border-bottom: 1px solid #e4e4e7;
   background-color: white;
-  position: sticky;
-  top: 80px;
 }
 
 .product-det-top h1 {
@@ -879,11 +882,44 @@
   }
 }
 
+@media (max-width: 991px) {
+  .product-det-top {
+    position: static;
+  }
+}
+
 /* Quick Menus */
 .quick-menus {
+  position: sticky;
+  top: var(--navbar-height);
+  align-items: center;
+  height: var(--quick-menu-height);
   padding: 2px 0;
   background-color: white;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  z-index: 5;
+  overflow-x: auto;
+  overflow-y: visible;
+  cursor: grab;
+  scroll-behavior: smooth;
+}
+
+.quick-menus:active {
+  cursor: grabbing;
+}
+
+.quick-menus.grabbing {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.quick-menus.grabbing a,
+.quick-menus.grabbing button {
+  pointer-events: none;
+}
+
+.quick-menus::-webkit-scrollbar {
+  display: none;
 }
 
 .quick-menus > .container > ul {
@@ -905,6 +941,7 @@
   font-size: 14px;
   font-weight: 400;
   color: var(--secondary-color);
+  white-space: nowrap;
 }
 
 .quick-menus ul li a.active {
@@ -918,7 +955,6 @@
 }
 
 /* Categories Products  */
-
 .categories-product-in {
   display: grid;
   grid-template-columns: 250px 1fr;
@@ -927,7 +963,7 @@
 
 .sub-cat-list {
   position: sticky;
-  top: 0;
+  top: calc(var(--navbar-height) + var(--quick-menu-height));
   max-height: 100dvh;
   overflow-y: auto;
   border: 1px solid #e4e4e7;
@@ -977,4 +1013,122 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
+}
+
+@media (max-width: 767px) {
+  .categories-product-in {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 991px) {
+  .nav-bar {
+    height: auto;
+  }
+
+  .categories-product-in {
+    grid-template-columns: 100px 1fr;
+  }
+
+  .sub-cat-list ul li a {
+    flex-direction: column;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+  .categories-product .container {
+    max-width: 95% !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .categories-all-products-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .product-img img {
+    height: 120px !important;
+    width: 120px !important;
+  }
+}
+
+@media (min-width: 426px) and (max-width: 767px) {
+  .categories-all-products-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .categories-all-products-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .categories-product-in {
+    grid-template-columns: 200px 1fr;
+  }
+
+  .categories-all-products-wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Float  Cart Button */
+.float-cart-btn {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 350px;
+  width: 90%;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px 8px 10px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  border: 2px solid black;
+  border-radius: 50px;
+}
+
+.float-cart-btn > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.float-cart-btn .cart-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: var(--primary-color);
+}
+
+.float-cart-btn h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  text-align: start;
+}
+
+.float-cart-btn span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .float-cart-btn {
+    bottom: 40px;
+    max-width: 250px;
+  }
 }
