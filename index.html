@@ -1265,7 +1265,7 @@
       });
     </script>
 
-    <!-- Float  Cart Button -->
+    <!-- Float Cart Button -->
     <button class="float-cart-btn">
       <div>
         <div class="cart-icon">
@@ -1278,6 +1278,102 @@
       </div>
       <span>View Cart</span>
     </button>
+
+    <!-- Cart Popup -->
+    <div class="cart-popup">
+      <div class="cart-popup-in">
+        <div class="cart-pop-top">
+          <h2>My Cart</h2>
+
+          <div class="cart-pop-top-in">
+            <div class="cart-products">
+              <div class="cart-product">
+                <div class="cart-product-left">
+                  <img
+                    src="https://cdn.ajke.app/cdn-cgi/image/fit=scale-down,metadata=none,dpr=1.5,width=50,height=50,f=avif/ajke/images/products/1737969648699.png"
+                    alt=""
+                  />
+                  <div>
+                    <h4>Freedom Sanitary Napkin Heavy Flow 8's Pack</h4>
+                    <h3>৳110</h3>
+                  </div>
+                </div>
+                <div>
+                  <div class="qty-wrapper">
+                    <button class="cart-qty-minus">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input type="number" value="1" min="1" name="" id="" />
+                    <button class="cart-qty-plus">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cart-product">
+                <div class="cart-product-left">
+                  <img
+                    src="https://cdn.ajke.app/cdn-cgi/image/fit=scale-down,metadata=none,dpr=1.5,width=50,height=50,f=avif/ajke/images/products/1737969648699.png"
+                    alt=""
+                  />
+                  <div>
+                    <h4>Freedom Sanitary Napkin Heavy Flow 8's Pack</h4>
+                    <h3>৳110</h3>
+                  </div>
+                </div>
+                <div>
+                  <div class="qty-wrapper">
+                    <button class="cart-qty-minus">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input type="number" value="1" min="1" name="" id="" />
+                    <button class="cart-qty-plus">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cart-bill">
+              <h3>Bill Details</h3>
+
+              <p>
+                <span>Items total</span>
+                <span>৳ 600</span>
+              </p>
+              <p>
+                <span>Delivery charge </span>
+                <span>৳ 40</span>
+              </p>
+              <p>
+                <span>Vat</span>
+                <span>৳ 0</span>
+              </p>
+
+              <hr class="my-1" />
+
+              <p>
+                <span>Grand total</span>
+                <span>৳ 640</span>
+              </p>
+            </div>
+            <div class="cart-cancellation-policy">
+              <h4>Cancellation & Delivery Policy</h4>
+              <p>
+                Orders cannot be canceled after being packed for delivery. If
+                there are unexpected delays, refunds may be provided. Orders
+                placed outside operating hours will be processed from 8:00 AM
+                the next business day.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="cart-pop-btm">
+          <a href="#" class="cart-checkout-btn">Checkout</a>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <section class="footer">
@@ -1405,6 +1501,35 @@
           input.val(0);
           wrapper.addClass("d-none");
           wrapper.siblings(".add-to-cart-btn").removeClass("d-none");
+        }
+      });
+    </script>
+
+    <script>
+      // Cart Popup Show Hide for small screen
+      $(".float-cart-btn").click(function () {
+        $(".cart-popup").addClass("active");
+      });
+
+      $(".cart-popup").click(function (e) {
+        if (!$(e.target).closest(".cart-popup-in").length) {
+          $(".cart-popup").removeClass("active");
+        }
+      });
+
+      // Cart Popup Qty manage
+      $(document).on("click", ".cart-qty-plus", function () {
+        let input = $(this).siblings("input");
+        let value = parseInt(input.val()) || 0;
+        input.val(value + 1);
+      });
+
+      $(document).on("click", ".cart-qty-minus", function () {
+        let input = $(this).siblings("input");
+        let value = parseInt(input.val()) || 0;
+
+        if (value > 1) {
+          input.val(value - 1);
         }
       });
     </script>
