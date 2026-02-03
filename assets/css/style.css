@@ -846,11 +846,17 @@
 .product-det-top h1 {
   font-size: 24px;
   font-weight: 600;
-  margin: 0 0 10px 0;
+  margin: 0 0 5px 0;
   color: black;
 }
 
+.product-variant p {
+  font-size: 14px;
+  margin: 2px 0;
+}
+
 .product-det-top-action {
+  margin-top: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1185,7 +1191,7 @@
 
 @media (max-width: 767px) {
   .float-cart-btn {
-    bottom: 40px;
+    bottom: 70px;
     max-width: 250px;
   }
 }
@@ -1347,5 +1353,42 @@
 @media (max-width: 991px) {
   .cart-popup {
     display: flex;
+  }
+}
+
+/* Bottom Navigation */
+.bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--primary-color);
+  padding: 10px;
+  z-index: 9;
+
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.bottom-navigation a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px;
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+@media (max-width: 767px) {
+  .bottom-navigation {
+    display: grid;
   }
 }
