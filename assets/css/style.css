@@ -958,7 +958,9 @@
   height: var(--quick-menu-height);
   padding: 2px 0;
   background-color: white;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
   z-index: 5;
   overflow-x: auto;
   overflow-y: visible;
@@ -1332,6 +1334,43 @@
   line-height: 110%;
 }
 
+.coupon-era {
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.coupon-inp-wrapper {
+  display: flex;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 5px;
+}
+
+.coupon-inp-wrapper input {
+  flex-grow: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 5px 5px 5px 10px;
+}
+
+.coupon-inp-wrapper button {
+  width: fit-content;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: var(--primary-color);
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
 .cart-pop-btm {
   height: 80px;
   padding: 10px 15px;
@@ -1390,5 +1429,72 @@
 @media (max-width: 767px) {
   .bottom-navigation {
     display: grid;
+  }
+}
+
+/* Promotion Banner */
+
+.promotion-banner {
+  padding-top: 30px;
+}
+
+.promotion-banner img {
+  width: 100%;
+}
+
+/*  Multi Promo Banner */
+.multi-promo-banner-in {
+  padding-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
+}
+
+.multi-promo-banner-left {
+  grid-column: span 4;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.multi-promo-banner-right {
+  grid-column: span 8;
+}
+
+.multi-promo-banner-left img,
+.multi-promo-banner-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+@media (max-width: 575px) {
+  .multi-promo-banner-left,
+  .multi-promo-banner-right {
+    grid-column: span 12;
+  }
+  .multi-promo-banner-right {
+    order: 1;
+  }
+  .multi-promo-banner-left {
+    order: 2;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .multi-promo-banner-left,
+  .multi-promo-banner-right {
+    grid-column: span 12;
+  }
+
+  .multi-promo-banner-right {
+    order: 1;
+  }
+  .multi-promo-banner-left {
+    order: 2;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
   }
 }
